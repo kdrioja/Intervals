@@ -29,7 +29,7 @@ public class CreateIntervals {
         int endOfIntervals = scanner.nextInt();
         System.out.println();
 
-        while (endOfIntervals <= 0) {
+        while (endOfIntervals <= 0 || endOfIntervals == startOfIntervals) {
             System.out.println("Invalid end time of intervals.");
             System.out.print("Please enter the end time of intervals: ");
             endOfIntervals = scanner.nextInt();
@@ -46,7 +46,8 @@ public class CreateIntervals {
         while (index < numOfIntervals) {
             Random rand = new Random();
             int intervalStart = rand.nextInt((end - start) + 1) + start;
-            int intervalEnd = rand.nextInt((end - intervalStart) + 1) + intervalStart;
+            int min = intervalStart + 1;
+            int intervalEnd = rand.nextInt((end - min) + 1) + intervalStart - min;
 
             Interval newInterval = new Interval(index, intervalStart, intervalEnd);
             intervalsList.add(newInterval);
