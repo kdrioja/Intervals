@@ -46,8 +46,15 @@ public class CreateIntervals {
         while (index < numOfIntervals) {
             Random rand = new Random();
             int intervalStart = rand.nextInt((end - start) + 1) + start;
-            int min = intervalStart + 1;
-            int intervalEnd = rand.nextInt((end - min) + 1) + intervalStart - min;
+            int intervalEnd;
+
+            if ((intervalStart + 1) == end) {
+                intervalEnd = end;
+            }
+            else {
+                int minInterval = intervalStart + 1;
+                intervalEnd = rand.nextInt((end - minInterval) + 1) + minInterval;
+            }
 
             Interval newInterval = new Interval(index, intervalStart, intervalEnd);
             intervalsList.add(newInterval);
