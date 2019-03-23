@@ -13,6 +13,6 @@ public class Main {
         System.out.println("==========Interval Scheduling==========");
 
 
-        System.out.println("==========Interval Partition==========");
+        System.out.println("==========Interval Partitioning==========");
     }
 }

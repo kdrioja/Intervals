@@ -12,4 +12,16 @@ public class Interval {
     public String toString() {
         return "[" + this.number + ", [" + this.startTime + ", " + this.endTime + "]]";
     }
+
+    public int getNumber() {
+        return number;
+    }
+
+    public int getStartTime() {
+        return startTime;
+    }
+
+    public int getEndTime() {
+        return endTime;
+    }
 }
