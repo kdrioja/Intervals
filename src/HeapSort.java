@@ -15,7 +15,7 @@ public class HeapSort {
      * Key to maintaining the max-heap property
      */
     public static void maxHeapify(Interval[] A, int i) {
-        
+
     }
 
 }
