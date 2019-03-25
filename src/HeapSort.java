@@ -1,81 +1,83 @@
+import java.util.ArrayList;
+
 public class HeapSort {
 
-    public static void maxSort(int A[]) {
-        int heapSize = A.length;
+    public static void maxEndSort(ArrayList<Interval> A) {
+        int heapSize = A.size();
 
-        buildMaxHeap(A, heapSize);
+        buildMaxEndHeap(A, heapSize);
 
         for (int i = heapSize - 1; i > -1; i--) {
-            int temp = A[0];
-            A[0] = A[i];
-            A[i] = temp;
-            maxHeapify(A, 0, i);
+            Interval temp = A.get(0);
+            A.set(0, A.get(i));
+            A.set(i, temp);
+            maxEndHeapify(A, 0, i);
         }
     }
 
-    public static void minSort(int A[]) {
-        int heapSize = A.length;
+    public static void maxStartSort(ArrayList<Interval> A) {
+        int heapSize = A.size();
 
-        buildMinHeap(A, heapSize);
+        buildMaxStartHeap(A, heapSize);
 
         for (int i = heapSize - 1; i > -1; i--) {
-            int temp = A[0];
-            A[0] = A[i];
-            A[i] = temp;
-            minHeapify(A, 0, i);
+            Interval temp = A.get(0);
+            A.set(0, A.get(i));
+            A.set(i, temp);
+            maxStartHeapify(A, 0, i);
         }
     }
 
-    public static void maxHeapify(int A[], int i, int heapSize) {
+    public static void maxEndHeapify(ArrayList<Interval> A, int i, int heapSize) {
         //these are all indexes
         int largest = i;
         int left = (2 * i) + 1;
         int right = (2 * i) + 2;
 
-        if (left < heapSize && A[left] > A[largest]) {
+        if (left < heapSize && A.get(left).getEndTime() > A.get(largest).getEndTime()) {
             largest = left;
         }
-        if (right < heapSize && A[right] > A[largest]) {
+        if (right < heapSize && A.get(right).getEndTime() > A.get(largest).getEndTime()) {
             largest = right;
         }
         if (largest != i) {
             //exchange A[i] with A[largest]
-            int temp = A[i];
-            A[i] = A[largest];
-            A[largest] = temp;
-            maxHeapify(A, largest, heapSize);
+            Interval temp = A.get(i);
+            A.set(i, A.get(largest));
+            A.set(largest, temp);
+            maxEndHeapify(A, largest, heapSize);
         }
     }
 
-    public static void minHeapify(int A[], int i, int heapSize) {
-        int smallest = i;
+    public static void maxStartHeapify(ArrayList<Interval> A, int i, int heapSize) {
+        int largest = i;
         int left = (2 * i) + 1;
         int right = (2 * i) + 2;
 
-        if (left < heapSize && A[left] < A[smallest]) {
-            smallest = left;
+        if (left < heapSize && A.get(left).getStartTime() > A.get(largest).getStartTime()) {
+            largest = left;
         }
-        if (right < heapSize && A[right] < A[smallest]) {
-            smallest = right;
+        if (right < heapSize && A.get(right).getStartTime() > A.get(largest).getStartTime()) {
+            largest = right;
         }
-        if (smallest != i) {
+        if (largest != i) {
             //exchange A[i] with A[largest]
-            int temp = A[i];
-            A[i] = A[smallest];
-            A[smallest] = temp;
-            minHeapify(A, smallest, heapSize);
+            Interval temp = A.get(i);
+            A.set(i, A.get(largest));
+            A.set(largest, temp);
+            maxStartHeapify(A, largest, heapSize);
         }
     }
 
-    public static void buildMaxHeap(int A[], int heapSize) {
+    public static void buildMaxEndHeap(ArrayList<Interval> A, int heapSize) {
         for (int i = (heapSize / 2) - 1; i > -1; i--) {
-            maxHeapify(A, i, heapSize);
+            maxEndHeapify(A, i, heapSize);
         }
     }
 
-    public static void buildMinHeap(int A[], int heapSize) {
+    public static void buildMaxStartHeap(ArrayList<Interval> A, int heapSize) {
         for (int i = (heapSize / 2) - 1; i >= 0; i--) {
-            minHeapify(A, i, heapSize);
+            maxStartHeapify(A, i, heapSize);
         }
     }
 }
