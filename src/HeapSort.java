@@ -29,7 +29,6 @@ public class HeapSort {
     }
 
     public static void maxEndHeapify(ArrayList<Interval> A, int i, int heapSize) {
-        //these are all indexes
         int largest = i;
         int left = (2 * i) + 1;
         int right = (2 * i) + 2;
@@ -41,7 +40,6 @@ public class HeapSort {
             largest = right;
         }
         if (largest != i) {
-            //exchange A[i] with A[largest]
             Interval temp = A.get(i);
             A.set(i, A.get(largest));
             A.set(largest, temp);
@@ -61,7 +59,6 @@ public class HeapSort {
             largest = right;
         }
         if (largest != i) {
-            //exchange A[i] with A[largest]
             Interval temp = A.get(i);
             A.set(i, A.get(largest));
             A.set(largest, temp);
