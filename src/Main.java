@@ -17,6 +17,9 @@ public class Main {
             System.out.println(intervals.get(i).toString());
         }
 
+        Class classroom = Scheduling.intervalScheduling(intervals);
+        System.out.println(classroom);
+
 
         System.out.println("==========Interval Partitioning==========");
         HeapSort.maxStartSort(intervals);
